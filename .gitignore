@@ -61,3 +61,5 @@ crashlytics-build.properties
 
 # Personal
 .idea/
+[Aa]ssets/Test
+[Aa]ssets/Test.meta
