@@ -13,6 +13,7 @@ public class MainMenuButtons : MonoBehaviour
     [SerializeField] private Button bt_quit;
 
     [SerializeField] private GameObject main;
+    [SerializeField] private GameObject story;
     [SerializeField] private GameObject option;
 
     [SerializeField] private SceneAsset gameScene;
@@ -38,6 +39,7 @@ public class MainMenuButtons : MonoBehaviour
         //Debug.Log("Options");
         
         main.SetActive(false);
+        story.SetActive(false);
         option.SetActive(true);
     }
 
@@ -46,6 +48,7 @@ public class MainMenuButtons : MonoBehaviour
         //Debug.Log("Back");
         
         main.SetActive(true);
+        story.SetActive(true);
         option.SetActive(false);
     }
 
