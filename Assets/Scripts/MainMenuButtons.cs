@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuButtons : MonoBehaviour
 {
-    public Button bt_start;
-    public Button bt_options;
-    public Button bt_back;
-    public Button bt_quit;
+    [SerializeField] private Button bt_start;
+    [SerializeField] private Button bt_options;
+    [SerializeField] private Button bt_back;
+    [SerializeField] private Button bt_quit;
 
-    public GameObject main;
-    public GameObject option;
+    [SerializeField] private GameObject main;
+    [SerializeField] private GameObject option;
+
+    [SerializeField] private SceneAsset gameScene;
     
     // Start is called before the first frame update
     void Start()
@@ -24,7 +28,9 @@ public class MainMenuButtons : MonoBehaviour
 
     private void start()
     {
-        Debug.Log("Start");
+        //Debug.Log("Start");
+
+        SceneManager.LoadScene(gameScene.name);
     }
 
     private void options()
