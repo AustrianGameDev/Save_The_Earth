@@ -1396,6 +1396,7 @@ MonoBehaviour:
   bt_quit: {fileID: 1705768784}
   main: {fileID: 1968462126}
   option: {fileID: 1891918648}
+  gameScene: {fileID: 102900000, guid: 2f1e2772da175361e93bab3834bef0e5, type: 3}
 --- !u!4 &1086517470
 Transform:
   m_ObjectHideFlags: 0
