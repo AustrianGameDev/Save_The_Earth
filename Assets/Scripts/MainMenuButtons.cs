@@ -17,6 +17,8 @@ public class MainMenuButtons : MonoBehaviour
     [SerializeField] private GameObject option;
 
     [SerializeField] private SceneAsset gameScene;
+
+    [SerializeField] private AudioClip click;
     
     // Start is called before the first frame update
     void Start()
@@ -29,14 +31,21 @@ public class MainMenuButtons : MonoBehaviour
 
     private void start()
     {
-        //Debug.Log("Start");
+        AudioSource.PlayClipAtPoint(click, transform.position, 1f);
 
+        StartCoroutine(loadGame());
+    }
+
+    private IEnumerator loadGame()
+    {
+        yield return new WaitForSeconds(0.2f);
+        
         SceneManager.LoadScene(gameScene.name);
     }
 
     private void options()
     {
-        //Debug.Log("Options");
+        AudioSource.PlayClipAtPoint(click, transform.position, 1f);
         
         main.SetActive(false);
         story.SetActive(false);
@@ -45,7 +54,7 @@ public class MainMenuButtons : MonoBehaviour
 
     private void back()
     {
-        //Debug.Log("Back");
+        AudioSource.PlayClipAtPoint(click, transform.position, 1f);
         
         main.SetActive(true);
         story.SetActive(true);
@@ -54,6 +63,15 @@ public class MainMenuButtons : MonoBehaviour
 
     private void quit()
     {
-        Debug.Log("Quit");
+        AudioSource.PlayClipAtPoint(click, transform.position, 1f);
+
+        StartCoroutine(quitGame());
+    }
+
+    private static IEnumerator quitGame()
+    {
+        yield return new WaitForSeconds(0.2f);
+        
+        // ToDo
     }
 }
