@@ -25,12 +25,13 @@ public class MainMenuButtons : MonoBehaviour
 
     [SerializeField] private AudioClip click;
 
-    // ToDo: Save volume
     private float volume = 1f;
     
     // Start is called before the first frame update
     void Start()
     {
+        loadSettings();
+        
         showVolume();
         
         bt_start.onClick.AddListener(start);
@@ -68,6 +69,8 @@ public class MainMenuButtons : MonoBehaviour
     {
         playClick();
         
+        saveSettings();
+        
         main.SetActive(true);
         story.SetActive(true);
         option.SetActive(false);
@@ -85,6 +88,18 @@ public class MainMenuButtons : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         
         // ToDo: Quit game
+    }
+
+    private void loadSettings()
+    {
+        Settings settings = SaveSystem.LoadSettings();
+        volume = settings.volume;
+        sl_volume.value = volume;
+    }
+
+    private void saveSettings()
+    {
+        SaveSystem.SaveSettings(this);
     }
     
     private void changeVolume(float volume)
@@ -104,5 +119,10 @@ public class MainMenuButtons : MonoBehaviour
     private void playClick()
     {
         AudioSource.PlayClipAtPoint(click, transform.position, volume);
+    }
+
+    public float GetVolume()
+    {
+        return volume;
     }
 }
