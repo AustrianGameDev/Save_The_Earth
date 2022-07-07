@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,6 +14,8 @@ public class MainMenuButtons : MonoBehaviour
     [SerializeField] private Button bt_quit;
 
     [SerializeField] private Slider sl_volume;
+    //[SerializeField] private GameObject volumeVal;
+    [SerializeField] private TextMeshProUGUI volumeVal;
 
     [SerializeField] private GameObject main;
     [SerializeField] private GameObject story;
@@ -28,6 +31,8 @@ public class MainMenuButtons : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        showVolume();
+        
         bt_start.onClick.AddListener(start);
         bt_options.onClick.AddListener(options);
         bt_back.onClick.AddListener(back);
@@ -85,7 +90,15 @@ public class MainMenuButtons : MonoBehaviour
     private void changeVolume(float volume)
     {
         this.volume = volume;
+        showVolume();
         //playClick(); // For Debug ;)
+    }
+
+    private void showVolume()
+    {
+        //volumeVal.GetComponent<TextMeshProUGUI>().SetText(volume.ToString());
+        int volumeInt = (int)(volume * 100);
+        volumeVal.SetText(volumeInt.ToString());
     }
 
     private void playClick()
