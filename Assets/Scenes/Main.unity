@@ -1469,6 +1469,7 @@ MonoBehaviour:
   bt_options: {fileID: 1144632871}
   bt_back: {fileID: 845864885}
   bt_quit: {fileID: 1705768784}
+  sl_volume: {fileID: 1253589049}
   main: {fileID: 1968462126}
   story: {fileID: 1228042640}
   option: {fileID: 1891918648}

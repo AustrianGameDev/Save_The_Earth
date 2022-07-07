@@ -12,6 +12,8 @@ public class MainMenuButtons : MonoBehaviour
     [SerializeField] private Button bt_back;
     [SerializeField] private Button bt_quit;
 
+    [SerializeField] private Slider sl_volume;
+
     [SerializeField] private GameObject main;
     [SerializeField] private GameObject story;
     [SerializeField] private GameObject option;
@@ -19,6 +21,9 @@ public class MainMenuButtons : MonoBehaviour
     [SerializeField] private SceneAsset gameScene;
 
     [SerializeField] private AudioClip click;
+
+    // ToDo: Save volume
+    private float volume = 1f;
     
     // Start is called before the first frame update
     void Start()
@@ -27,11 +32,13 @@ public class MainMenuButtons : MonoBehaviour
         bt_options.onClick.AddListener(options);
         bt_back.onClick.AddListener(back);
         bt_quit.onClick.AddListener(quit);
+        
+        sl_volume.onValueChanged.AddListener(changeVolume);
     }
 
     private void start()
     {
-        AudioSource.PlayClipAtPoint(click, transform.position, 1f);
+        playClick();
 
         StartCoroutine(loadGame());
     }
@@ -45,7 +52,7 @@ public class MainMenuButtons : MonoBehaviour
 
     private void options()
     {
-        AudioSource.PlayClipAtPoint(click, transform.position, 1f);
+        playClick();
         
         main.SetActive(false);
         story.SetActive(false);
@@ -54,7 +61,7 @@ public class MainMenuButtons : MonoBehaviour
 
     private void back()
     {
-        AudioSource.PlayClipAtPoint(click, transform.position, 1f);
+        playClick();
         
         main.SetActive(true);
         story.SetActive(true);
@@ -63,7 +70,7 @@ public class MainMenuButtons : MonoBehaviour
 
     private void quit()
     {
-        AudioSource.PlayClipAtPoint(click, transform.position, 1f);
+        playClick();
 
         StartCoroutine(quitGame());
     }
@@ -72,6 +79,17 @@ public class MainMenuButtons : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         
-        // ToDo
+        // ToDo: Quit game
+    }
+    
+    private void changeVolume(float volume)
+    {
+        this.volume = volume;
+        //playClick(); // For Debug ;)
+    }
+
+    private void playClick()
+    {
+        AudioSource.PlayClipAtPoint(click, transform.position, volume);
     }
 }
