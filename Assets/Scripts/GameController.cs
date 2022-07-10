@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -120,7 +121,7 @@ public class GameController : MonoBehaviour
     
     private BigInteger perSecondAmount()
     {
-        switch(clickLvl)
+        switch(perSecondLvl)
         {
             case 1: return 1;
             case 2: return 3;
