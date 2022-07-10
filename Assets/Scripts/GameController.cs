@@ -43,7 +43,18 @@ public class GameController : MonoBehaviour
         updateScore();
     }
 
-    // ToDo: Upgrade functions
+    // Upgrade functions
+    public void UpgradeClick()
+    {
+        click++;
+        updatePerClick();
+    }
+
+    public void UpgradePerSecond()
+    {
+        perSecond++;
+        updatePerSecond();
+    }
     
     // Update Text
     private void updateScore()
@@ -61,7 +72,7 @@ public class GameController : MonoBehaviour
         perSecondText.SetText(perSecond.ToString());
     }
 
-    // Getters/Setters
+    // Getters
     public BigInteger GetScore()
     {
         return score;
@@ -72,20 +83,8 @@ public class GameController : MonoBehaviour
         return click;
     }
 
-    public void SetClick(BigInteger newValue)
-    {
-        click = newValue;
-        updatePerClick();
-    }
-
     public BigInteger GetPerSecond()
     {
         return perSecond;
-    }
-
-    public void SetPerSecond(BigInteger newValue)
-    {
-        perSecond = newValue;
-        updatePerSecond();
     }
 }

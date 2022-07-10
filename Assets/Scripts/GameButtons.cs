@@ -24,15 +24,11 @@ public class GameButtons : MonoBehaviour
 
     private void onUpgradeClick()
     {
-        BigInteger click = gameController.GetClick();
-        click++;
-        gameController.SetClick(click);
+        gameController.UpgradeClick();
     }
 
     private void onUpgradePerSecond()
     {
-        BigInteger perSecond = gameController.GetPerSecond();
-        perSecond++;
-        gameController.SetPerSecond(perSecond);
+        gameController.UpgradePerSecond();
     }
 }
