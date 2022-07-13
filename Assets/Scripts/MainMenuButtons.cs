@@ -11,6 +11,9 @@ public class MainMenuButtons : MonoBehaviour
     [SerializeField] private Button bt_start;
     [SerializeField] private Button bt_options;
     [SerializeField] private Button bt_back;
+    [SerializeField] private Button bt_reset;
+    [SerializeField] private Button bt_cancelReset;
+    [SerializeField] private Button bt_doReset;
     [SerializeField] private Button bt_quit;
 
     [SerializeField] private Slider sl_volume;
@@ -20,6 +23,7 @@ public class MainMenuButtons : MonoBehaviour
     [SerializeField] private GameObject main;
     [SerializeField] private GameObject story;
     [SerializeField] private GameObject option;
+    [SerializeField] private GameObject accept;
 
     [SerializeField] private SceneAsset gameScene;
 
@@ -37,6 +41,9 @@ public class MainMenuButtons : MonoBehaviour
         bt_start.onClick.AddListener(start);
         bt_options.onClick.AddListener(options);
         bt_back.onClick.AddListener(back);
+        bt_reset.onClick.AddListener(reset);
+        bt_cancelReset.onClick.AddListener(cancelReset);
+        bt_doReset.onClick.AddListener(doReset);
         bt_quit.onClick.AddListener(quit);
         
         sl_volume.onValueChanged.AddListener(changeVolume);
@@ -74,6 +81,27 @@ public class MainMenuButtons : MonoBehaviour
         main.SetActive(true);
         story.SetActive(true);
         option.SetActive(false);
+        accept.SetActive(false);
+    }
+
+    private void reset()
+    {
+        option.SetActive(false);
+        accept.SetActive(true);
+        playClick();
+    }
+
+    private void cancelReset()
+    {
+        option.SetActive(true);
+        accept.SetActive(false);
+        playClick();
+    }
+
+    private void doReset()
+    {
+        SaveSystem.ResetGame();
+        back();
     }
 
     private void quit()

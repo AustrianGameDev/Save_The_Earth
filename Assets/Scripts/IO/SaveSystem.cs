@@ -64,4 +64,15 @@ public static class SaveSystem
             return new Game();
         }
     }
+    
+    public static void ResetGame()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        FileStream stream = new FileStream(gamePath, FileMode.Create);
+
+        Game game = new Game();
+
+        formatter.Serialize(stream, game);
+        stream.Close();
+    }
 }
