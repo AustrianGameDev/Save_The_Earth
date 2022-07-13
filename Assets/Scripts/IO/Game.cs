@@ -13,6 +13,9 @@ public class Game
     
     public BigInteger perSecond;
     public int perSecondLvl;
+    
+    public BigInteger treeCounter;
+    public BigInteger clickCounter;
 
     public Game()
     {
@@ -23,6 +26,9 @@ public class Game
         
         perSecond = 0;
         perSecondLvl = 1;
+
+        treeCounter = 0;
+        clickCounter = 0;
     }
 
     public Game(GameController gameController)
@@ -34,5 +40,8 @@ public class Game
         
         perSecond = gameController.GetPerSecond();
         perSecondLvl = gameController.GetPerSecondLvl();
+
+        treeCounter = gameController.GetTreeCounter();
+        clickCounter = gameController.GetClickCounter();
     }
 }

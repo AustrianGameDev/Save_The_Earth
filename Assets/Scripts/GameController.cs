@@ -16,6 +16,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI perSecondText;
     [SerializeField] private TextMeshProUGUI perSecondCost;
     
+    [SerializeField] private TextMeshProUGUI totalTreesCounter;
+    [SerializeField] private TextMeshProUGUI totalClicksCounter;
+    
     private BigInteger score;
     
     private BigInteger click;
@@ -23,6 +26,9 @@ public class GameController : MonoBehaviour
     
     private BigInteger perSecond;
     private int perSecondLvl;
+
+    private BigInteger treeCounter;
+    private BigInteger clickCounter;
     
     // Start is called before the first frame update
     void Start()
@@ -35,6 +41,9 @@ public class GameController : MonoBehaviour
         
         perSecond = 0;
         perSecondLvl = 1;
+
+        treeCounter = 0;
+        clickCounter = 0;
         
         updateText();
         
@@ -57,12 +66,19 @@ public class GameController : MonoBehaviour
     {
         score += click;
         updateScore();
+
+        treeCounter += click;
+        clickCounter++;
+        updateStats();
     }
 
     private void perSecondRepeat()
     {
         score += perSecond;
         updateScore();
+
+        treeCounter += perSecond;
+        updateStats();
     }
 
     // Upgrade functions
@@ -161,7 +177,7 @@ public class GameController : MonoBehaviour
     // Update Text
     private void updateScore()
     {
-        scoreText.SetText(thousandSeperators(score));
+        scoreText.SetText(thousandSeperators(score) + "$");
     }
 
     private void updatePerClick()
@@ -172,7 +188,7 @@ public class GameController : MonoBehaviour
     private void updateClickCost()
     {
         BigInteger cost = getCostByLvl(clickLvl);
-        perClickCost.SetText("Cost:\n" + thousandSeperators(cost));
+        perClickCost.SetText("Cost:\n" + thousandSeperators(cost) + "$");
     }
 
     private void updatePerSecond()
@@ -183,7 +199,13 @@ public class GameController : MonoBehaviour
     private void updatePerSecondCost()
     {
         BigInteger cost = getCostByLvl(perSecondLvl);
-        perSecondCost.SetText("Cost:\n" + thousandSeperators(cost));
+        perSecondCost.SetText("Cost:\n" + thousandSeperators(cost) + "$");
+    }
+
+    private void updateStats()
+    {
+        totalTreesCounter.SetText(thousandSeperators(treeCounter) + "$");
+        totalClicksCounter.SetText(thousandSeperators(clickCounter));
     }
 
     // Getters
@@ -210,6 +232,16 @@ public class GameController : MonoBehaviour
     public int GetPerSecondLvl()
     {
         return perSecondLvl;
+    }
+
+    public BigInteger GetTreeCounter()
+    {
+        return treeCounter;
+    }
+
+    public BigInteger GetClickCounter()
+    {
+        return clickCounter;
     }
     
     // Utils
