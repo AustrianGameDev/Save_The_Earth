@@ -4,6 +4,7 @@ using System.Numerics;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameButtons : MonoBehaviour
@@ -15,6 +16,9 @@ public class GameButtons : MonoBehaviour
     [SerializeField] private Button bt_upgradePerSecond;
     [SerializeField] private Button bt_showStats;
     [SerializeField] private Button bt_backStats;
+    [SerializeField] private Button bt_saveAndQuit;
+
+    [SerializeField] private SceneAsset mainScene;
 
     private GameController gameController;
     
@@ -27,6 +31,7 @@ public class GameButtons : MonoBehaviour
         bt_upgradePerSecond.onClick.AddListener(onUpgradePerSecond);
         bt_showStats.onClick.AddListener(onShowStats);
         bt_backStats.onClick.AddListener(onBackStats);
+        bt_saveAndQuit.onClick.AddListener(onSaveAndQuit);
     }
 
     private void onUpgradeClick()
@@ -49,5 +54,11 @@ public class GameButtons : MonoBehaviour
     {
         notStatistics.SetActive(true);
         statistics.SetActive(false);
+    }
+
+    private void onSaveAndQuit()
+    {
+        SaveSystem.SaveGame(gameController);
+        SceneManager.LoadScene(mainScene.name);
     }
 }

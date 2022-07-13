@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour
     void Start()
     {
         // ToDo: Get from save
-        score = 0;
+        /*score = 0;
         
         click = 1;
         clickLvl = 1;
@@ -43,11 +43,28 @@ public class GameController : MonoBehaviour
         perSecondLvl = 1;
 
         treeCounter = 0;
-        clickCounter = 0;
+        clickCounter = 0;*/
+        loadGame();
         
         updateText();
         
         InvokeRepeating(nameof(perSecondRepeat), 1f, 1f);
+    }
+
+    private void loadGame()
+    {
+        Game game = SaveSystem.LoadGame();
+
+        score = game.score;
+
+        click = game.click;
+        clickLvl = game.clickLvl;
+
+        perSecond = game.perSecond;
+        perSecondLvl = game.perSecondLvl;
+
+        treeCounter = game.treeCounter;
+        clickCounter = game.clickCounter;
     }
 
     private void updateText()
@@ -169,11 +186,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private BigInteger getAmountByLvl(int lvl)
-    {
-        return 0;
-    }
-    
     // Update Text
     private void updateScore()
     {
