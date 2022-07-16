@@ -1889,6 +1889,7 @@ MonoBehaviour:
   bt_backStats: {fileID: 1897460794}
   bt_saveAndQuit: {fileID: 1080540152}
   mainScene: {fileID: 102900000, guid: 2cda990e2423bbf4892e6590ba056729, type: 3}
+  click: {fileID: 8300000, guid: 4147201e1a63804b5a5f71aa09b21d33, type: 3}
 --- !u!1 &1059743630
 GameObject:
   m_ObjectHideFlags: 0
