@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using TMPro;
-using UnityEditor;
+//using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -18,7 +18,8 @@ public class GameButtons : MonoBehaviour
     [SerializeField] private Button bt_backStats;
     [SerializeField] private Button bt_saveAndQuit;
 
-    [SerializeField] private SceneAsset mainScene;
+    //[SerializeField] private SceneAsset mainScene;
+    [SerializeField] private string mainScene;
     
     [SerializeField] private AudioClip click;
 
@@ -77,7 +78,8 @@ public class GameButtons : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         
         SaveSystem.SaveGame(gameController);
-        SceneManager.LoadScene(mainScene.name);
+        //SceneManager.LoadScene(mainScene.name);
+        SceneManager.LoadScene(mainScene);
     }
     
     private void playClick()

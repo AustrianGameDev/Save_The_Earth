@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor;
+//using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -25,7 +25,8 @@ public class MainMenuButtons : MonoBehaviour
     [SerializeField] private GameObject option;
     [SerializeField] private GameObject accept;
 
-    [SerializeField] private SceneAsset gameScene;
+    //[SerializeField] private SceneAsset gameScene;
+    [SerializeField] private string gameScene;
 
     [SerializeField] private AudioClip click;
 
@@ -60,7 +61,8 @@ public class MainMenuButtons : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         
-        SceneManager.LoadScene(gameScene.name);
+        //SceneManager.LoadScene(gameScene.name);
+        SceneManager.LoadScene(gameScene);
     }
 
     private void options()

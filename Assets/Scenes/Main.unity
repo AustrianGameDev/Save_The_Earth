@@ -2159,7 +2159,7 @@ MonoBehaviour:
   story: {fileID: 1228042640}
   option: {fileID: 1891918648}
   accept: {fileID: 1265540942}
-  gameScene: {fileID: 102900000, guid: 2f1e2772da175361e93bab3834bef0e5, type: 3}
+  gameScene: Game
   click: {fileID: 8300000, guid: 4147201e1a63804b5a5f71aa09b21d33, type: 3}
 --- !u!4 &1086517470
 Transform:
