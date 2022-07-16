@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Numerics;
 using TMPro;
 using UnityEngine;
+using Random = System.Random;
 
 public class GameController : MonoBehaviour
 {
