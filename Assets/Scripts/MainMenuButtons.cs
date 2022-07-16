@@ -115,7 +115,7 @@ public class MainMenuButtons : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         
-        // ToDo: Quit game
+        Application.Quit();
     }
 
     private void loadSettings()
